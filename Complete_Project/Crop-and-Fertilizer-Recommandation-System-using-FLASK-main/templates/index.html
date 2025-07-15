@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop and Fertilizer Recommendation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Crop and Fertilizer Recommendation System</h1>
+        <form method="POST" action="/">
+            <div class="form-group">
+                <label for="N">Nitrogen (N)</label>
+                <input type="number" class="form-control" id="N" name="N" required step="any">
+            </div>
+            <div class="form-group">
+                <label for="P">Phosphorus (P)</label>
+                <input type="number" class="form-control" id="P" name="P" required step="any">
+            </div>
+            <div class="form-group">
+                <label for="K">Potassium (K)</label>
+                <input type="number" class="form-control" id="K" name="K" required step="any">
+            </div>
+            <div class="form-group">
+                <label for="temperature">Temperature (°C)</label>
+                <input type="number" class="form-control" id="temperature" name="temperature" required step="any">
+            </div>
+            <div class="form-group">
+                <label for="humidity">Humidity (%)</label>
+                <input type="number" class="form-control" id="humidity" name="humidity" required step="any">
+            </div>
+            <div class="form-group">
+                <label for="ph">Soil pH</label>
+                <input type="number" class="form-control" id="ph" name="ph" required step="any">
+            </div>
+            <div class="form-group">
+                <label for="rainfall">Rainfall (mm)</label>
+                <input type="number" class="form-control" id="rainfall" name="rainfall" required step="any">
+            </div>
+            <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+
+        <div class="mt-5">
+            {% if crop_prediction %}
+                <h3 class="text-success">Predicted Crop: {{ crop_prediction }}</h3>
+            {% endif %}
+            {% if fertilizer_prediction %}
+                <h3 class="text-info">Recommended Fertilizer: {{ fertilizer_prediction }}</h3>
+            {% endif %}
+            {% if error %}
+                <h3 class="text-danger">Error: {{ error }}</h3>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
