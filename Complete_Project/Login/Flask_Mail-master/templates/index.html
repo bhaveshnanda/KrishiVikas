@@ -1,0 +1,64 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="./static/css/style.css"/>
+</head>
+<body>
+<form action="/verify" method="post">
+    <b><a>Email:</a></b><input type="email" name="email">
+    <input type="submit" value="Submit">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+</form>
+<a href="./register.html"><button>Register</button></a>
+</body>
+</html> -->
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <!-- coding by helpme_coder -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./static/css/style.css">
+    <title>Verify User</title>
+ </head>
+<body>  
+    <div class="container">
+       <div class="box">
+        <div class="header">
+            <p>Log In</p>
+        </div>
+        <form action="/verify" method="post">
+        <div class="input-box">
+            <label for="email">E-Mail</label>
+            <input type="email" name="email" class="input-field" id="email" required>
+            <i class="bx bx-envelope"></i>
+        </div>
+        <div class="input-box">
+            <input type="submit" class="input-submit" value="Send OTP">
+        </div>
+        <div class="bottom">
+            <span><a href="register.html">Register Now</a></span>
+        </div>
+        {% if error %}
+        <div style="color: red; display:flex; justify-content: center;"><b>{{ error }}</b></div>
+        {% endif %}
+        </div>
+        </form>
+       <div class="wrapper"></div>
+    </div>
+</body>
+</html>
