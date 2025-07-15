@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="CropFusionAI : Crop & Fertilizer Recommendation"
+    />
+    <title>KrishiVikas</title>
+    <link rel="shortcut icon" href="main-logo.png" />
+    <link rel="icon" href="main-logo.png" />
+    <style>
+      /* body {
+        font-family: Arial, sans-serif;
+      } */
+
+      .chat-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        font-size: 28px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+      }
+
+      .chat-popup {
+        display: none;
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        width: 320px;
+        max-height: 460px;
+        background-color: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        z-index: 1001;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .chat-header {
+        background-color: #28a745;
+        color: white;
+        padding: 10px;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .refresh-btn {
+        background: transparent;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .chat-messages {
+        flex: 1;
+        padding: 10px;
+        overflow-y: auto;
+        height: 300px;
+      }
+
+      .chat-input {
+        display: flex;
+        border-top: 1px solid #ccc;
+      }
+
+      .chat-input input {
+        flex: 1;
+        border: none;
+        padding: 10px;
+        font-size: 14px;
+      }
+
+      .chat-input button {
+        background-color: #28a745;
+        border: none;
+        color: white;
+        padding: 10px 15px;
+        cursor: pointer;
+      }
+
+      .message {
+        margin: 5px 0;
+      }
+
+      .user-message {
+        text-align: right;
+        color: #333;
+      }
+      .bot-message {
+        text-align: left;
+        color: #155724;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+  <button class="chat-button" onclick="toggleChat()" title="Farming Info">
+    💬
+  </button>
+
+  <div class="chat-popup" id="chatPopup">
+    <div class="chat-header">
+      Krishi Assistant
+      <button class="refresh-btn" onclick="refreshChat()">⟳</button>
+    </div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-input">
+      <input type="text" id="chatInput" placeholder="Enter crop name..." />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script type="module">
+    import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
+
+    const API_KEY = "AIzaSyBA-GoB6rFbdQIraE5nyQxacuTTDGnmBkA";
+    const genAI = new GoogleGenerativeAI(API_KEY);
+    let model;
+
+    async function initModel() {
+      model = await genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    }
+    await initModel();
+
+    window.onload = () => {
+      const history = JSON.parse(localStorage.getItem("chatHistory")) || [];
+      history.forEach((item) => appendMessage(item.content, item.sender));
+    };
+
+    function toggleChat() {
+      const chatPopup = document.getElementById("chatPopup");
+      const wasClosed = chatPopup.style.display !== "flex";
+      chatPopup.style.display = wasClosed ? "flex" : "none";
+
+      if (wasClosed && !localStorage.getItem("chatHistory")) {
+        const welcomeMsg =
+          "Hi! 👋 Enter the crop name to get detailed farming steps.";
+        appendMessage(welcomeMsg, "bot");
+        storeMessage(welcomeMsg, "bot");
+      }
+    }
+    function appendMessage(content, sender) {
+      const msg = document.createElement("div");
+      msg.className = `message ${sender}-message`;
+
+      if (sender === "bot") {
+        const lines = content
+          .split(/\n+/)
+          .filter((line) => line.trim() !== "");
+
+        // Check if the message has steps
+        const hasSteps = lines.some((line) => /^\d+\./.test(line));
+
+        if (hasSteps) {
+          const container = document.createElement("div");
+          let currentStep;
+
+          lines.forEach((line) => {
+            const isNumberedTitle = /^\d+\./.test(line.trim());
+
+            if (isNumberedTitle) {
+              currentStep = document.createElement("div");
+              currentStep.style.marginBottom = "8px";
+
+              const title = document.createElement("strong");
+              title.textContent = line.trim();
+              currentStep.appendChild(title);
+            } else {
+              const explanation = document.createElement("div");
+              explanation.style.marginLeft = "15px";
+              explanation.textContent = "- " + line.trim();
+
+              if (currentStep) {
+                currentStep.appendChild(explanation);
+                container.appendChild(currentStep);
+              }
+            }
+          });
+
+          msg.appendChild(container);
+        } else {
+          // If no steps, just show the plain message (like a welcome or error)
+          msg.textContent = content;
+        }
+      } else {
+        msg.textContent = content;
+      }
+
+      document.getElementById("chatMessages").appendChild(msg);
+      document.getElementById("chatMessages").scrollTop =
+        document.getElementById("chatMessages").scrollHeight;
+    }
+
+    function storeMessage(content, sender) {
+      const history = JSON.parse(localStorage.getItem("chatHistory")) || [];
+      history.push({ content, sender });
+      localStorage.setItem("chatHistory", JSON.stringify(history));
+    }
+
+    async function sendMessage() {
+      const input = document.getElementById("chatInput");
+      const crop = input.value.trim();
+      if (!crop) return;
+
+      appendMessage(crop, "user");
+      storeMessage(crop, "user");
+      input.value = "";
+
+      const response = await getGeminiResponse(crop);
+      appendMessage(response, "bot");
+      storeMessage(response, "bot");
+    }
+
+    async function getGeminiResponse(crop) {
+      try {
+        const prompt = `Explain in very simple and clear language how to grow "${crop}" step by step for a farmer. 
+          Use easy words. Avoid technical terms. Just guide the farmer like you are his friend.
+
+          Cover these in order:
+          1. Ideal weather and soil type
+          2. How to prepare the land
+          3. How to plant the seeds
+          4. How to water the crop
+          5. What fertilizer to use and when
+          6. How to protect from pests and diseases
+          7. When and how to harvest
+
+          Give each step like this:
+          1. Step title - one sentence
+          - Simple explanation for what to do.
+
+          Example:
+          1. Prepare the land  
+          - Clean the field and plough it well.
+
+          Only write clear, short, farmer-friendly steps.`;
+
+        const result = await model.generateContent(prompt);
+        return result.response.text();
+      } catch (err) {
+        return "❌ Error fetching response. Try again later.";
+      }
+    }
+
+    function refreshChat() {
+      localStorage.removeItem("chatHistory");
+      document.getElementById("chatMessages").innerHTML = "";
+      const welcome =
+        "Hi! 👋 Enter the crop name to get detailed farming steps.";
+      appendMessage(welcome, "bot");
+      storeMessage(welcome, "bot");
+    }
+
+    // 👇 Add this to expose functions to inline HTML
+    window.toggleChat = toggleChat;
+    window.sendMessage = sendMessage;
+    window.refreshChat = refreshChat;
+  </script>
+  <script type="module" src="/src/index.jsx"></script>
+</html>
