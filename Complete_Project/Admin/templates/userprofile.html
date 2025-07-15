@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="UTF-8">
+  <title>Bhavesh Profile</title>
+  <link href="../static/images/1720_8.jpg" rel="icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="../static/css/userprofile.css">
+  <meta content="Tinura Dinith" name="keywords">
+
+  <style>
+    /* Style for the Cancel button */
+    .cancel-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .cancel-button:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  </style>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="card" data-state="#about" style="position: relative;">
+  <div class="card-header">
+    <div class="card-cover" style="background-image: url('https://images.unsplash.com/photo-1554034483-04fda0d3507b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')"></div>
+    <img class="card-avatar" src="../static/images/1720_8.jpg" alt="avatar" />
+    <h1 class="card-fullname">Bhavesh Nanda</h1>
+    <h2 class="card-jobtitle">Student</h2>
+  </div>
+  
+  <!-- Cancel Button -->
+  <a href="webadmin.html"><button class="cancel-button">❌</button></a>
+  
+  <div class="card-main">
+    <div class="card-section is-active" id="about">
+      <div class="card-content">
+        <div class="card-subtitle">ABOUT</div>
+        <p class="card-desc">I'm currently pursuing a BE in Electronics and Telecommunication, and I'm deeply passionate about coding. With a strong interest in web development, I'm skilled in the M.E.R.N.
+        </p>
+      </div>
+    </div>
+    <div class="card-section" id="experience">
+      <div class="card-content">
+        <div class="card-subtitle">Details</div>
+        <div class="card-timeline">
+
+          <div class="card-item" data-year="Email-id">
+            <div class="card-item-title"><span>nandabhavesh2003@gmail.com</span></div>
+          </div>
+
+          <div class="card-item" data-year="Phone-no.">
+            <div class="card-item-title"><span>9892426988</span></div>
+          </div>
+
+         <div class="card-item" data-year="Address">
+            <div class="card-item-title">A11/34, RNA Broadway Avenue</div>
+            <div class="card-item-desc">Near Jangid Complex, Mira Road.</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="card-buttons">
+      <button data-section="#about" class="is-active">ABOUT</button>
+      <button data-section="#experience">CONTACT</button>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  <script src="../static/userprofile.js"></script>
+
+</body>
+</html>
