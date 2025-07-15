@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Community Discussion</title>
+    <link rel="stylesheet" href="../static/css/community.css" />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <!-- <div class="home"> -->
+    <div class="nav-bar">
+      <div class="left-side">
+        <div class="logo">
+          <img
+            style="width: 87px; height: 70px"
+            src="../static/Images/main-logo.png"
+            alt="Logo"
+          />
+        </div>
+      </div>
+
+      <div class="right-side">
+        <ul id="nav-links">
+          <li>
+            <a href="index.html"><i class="fa fa-fw fa-home"></i>Home</a>
+          </li>
+          <li>
+            <a href="#news">
+              <i class="fa-solid fa-newspaper" aria-hidden="true"></i>News
+              Updates</a
+            >
+          </li>
+          <li>
+            <a href="cultivation.html"
+              ><i class="fa fa-asl-interpreting"></i>Cultivation &amp;
+              Protection</a
+            >
+          </li>
+          <li>
+            <a href="contactUs.html"
+              ><i class="fa fa-fw fa-envelope"></i>Contact Us</a
+            >
+          </li>
+        </ul>
+      </div>
+      <a class="no-display" href="http://localhost:5000/"
+        ><button id="login"><i class="fa fa-fw fa-user"></i>Logout</button></a
+      >
+
+      <button class="right-bar">
+        <span class="bar"></span>
+      </button>
+    </div>
+
+    <div class="mobile_nav">
+      <ul id="mobile_nav_links">
+        <li>
+          <a href="index.html"><i class="fa fa-fw fa-home"></i>Home</a>
+        </li>
+        <li>
+          <a href="#news">
+            <i class="fa-solid fa-newspaper" aria-hidden="true"></i>News
+            Updates</a
+          >
+        </li>
+        <li>
+          <a href="cultivation.html"
+            ><i class="fa fa-asl-interpreting"></i>Cultivation &amp;
+            Protection</a
+          >
+        </li>
+        <li>
+          <a href="contactUs.html"
+            ><i class="fa fa-fw fa-envelope"></i>Contact Us</a
+          >
+        </li>
+      </ul>
+      <a href="http://localhost:5000/"
+        ><button id="mobile_login">
+          <i class="fa fa-fw fa-user"></i>Logout
+        </button></a
+      >
+      <div class="mobile_footer">
+        <p>Copyright&copy; 2024. All Rights Reserved</p>
+      </div>
+    </div>
+
+    <div class="hero-image" style="display: inline-block">
+      <video autoplay muted loop>
+        <source
+          src="./static/images/Pexels Videos 2758322.mp4"
+          type="video/mp4"
+        />
+      </video>
+    </div>
+
+    <!-- </div> -->
+
+    <div class="discussion-container">
+      <h1>Community Discussion</h1>
+
+      <div id="discussion-box">
+        <!-- Messages will appear here -->
+      </div>
+
+      <form id="message-form">
+        <input type="hidden" id="username" name="username" />
+        <textarea
+          id="message"
+          placeholder="Write a message..."
+          required
+        ></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+
+    <script src="../static/community.js"></script>
+    <script>
+      // Array of names
+      const names = ["Bhavesh Nanda", "Ritik Pandey", "Yash Kelhe"];
+
+      // Function to assign a random name to the hidden input
+      function assignRandomName() {
+        const randomName = names[Math.floor(Math.random() * names.length)];
+        document.getElementById("username").value = randomName;
+      }
+
+      // Assign a random name initially when the page loads
+      assignRandomName();
+
+      // Add an event listener to the form to change the name on every submission
+      document
+        .getElementById("message-form")
+        .addEventListener("submit", function (event) {
+          assignRandomName(); // Assign a new random name each time the form is submitted
+        });
+    </script>
+  </body>
+</html>

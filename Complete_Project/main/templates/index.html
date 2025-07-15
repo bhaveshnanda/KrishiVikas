@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="static/css/style.css" />
+    <script defer src="static/script.js"></script>
+    <script defer src="static/search_bar.js"></script>
+    <link rel="icon" href="%TEMPLATES_URL%/main-logo.png" type="image/png" />
+    <link rel="apple-touch-icon" href="./main-logo.png" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/11007c58bc.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>KrishiVikas</title>
+  </head>
+  <body>
+    <div class="home">
+      <div class="nav-bar">
+        <div class="left-side">
+          <div class="logo">
+            <img
+              style="width: 87px; height: 70px"
+              src="static/images/main-logo.png"
+              alt="Logo"
+            />
+          </div>
+        </div>
+
+        <div class="right-side">
+          <ul id="nav-links">
+            <li>
+              <a href="index.html"><i class="fa fa-fw fa-home"></i>Home</a>
+            </li>
+            <li>
+              <a href="#news">
+                <i class="fa-solid fa-newspaper" aria-hidden="true"></i>News
+                Updates</a
+              >
+            </li>
+            <li>
+              <a href="cultivation.html"
+                ><i class="fa fa-asl-interpreting"></i>Cultivation &amp;
+                Protection</a
+              >
+            </li>
+            <li>
+              <a href="contactUs.html"
+                ><i class="fa fa-fw fa-envelope"></i>Contact Us</a
+              >
+            </li>
+          </ul>
+        </div>
+        <a class="no-display" href="http://localhost:5000/"
+          ><button id="login"><i class="fa fa-fw fa-user"></i>Logout</button></a
+        >
+
+        <button class="right-bar">
+          <span class="bar"></span>
+        </button>
+      </div>
+
+      <div class="mobile_nav">
+        <ul id="mobile_nav_links">
+          <li>
+            <a href="index.html"><i class="fa fa-fw fa-home"></i>Home</a>
+          </li>
+          <li>
+            <a href="#news">
+              <i class="fa-solid fa-newspaper" aria-hidden="true"></i>News
+              Updates</a
+            >
+          </li>
+          <li>
+            <a href="cultivation.html"
+              ><i class="fa fa-asl-interpreting"></i>Cultivation &amp;
+              Protection</a
+            >
+          </li>
+          <li>
+            <a href="contactUs.html"
+              ><i class="fa fa-fw fa-envelope"></i>Contact Us</a
+            >
+          </li>
+        </ul>
+        <a href="http://localhost:5000/"
+          ><button id="mobile_login">
+            <i class="fa fa-fw fa-user"></i>Logout
+          </button></a
+        >
+        <div class="mobile_footer">
+          <p>Copyright&copy; 2024. All Rights Reserved</p>
+        </div>
+      </div>
+
+      <div class="hero-image" style="display: inline-block">
+        <video autoplay muted loop>
+          <source
+            src="./static/images/Pexels Videos 2758322.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </div>
+
+      <div class="search_bar">
+        <div class="search_img">
+          <img src="static/images/Search_img.png" alt="search_image" />
+        </div>
+
+        <input type="text" placeholder="Quick Search" id="quick_search" />
+      </div>
+    </div>
+
+    <div class="sub-home">
+      <div class="looking-for">
+        <div class="card">
+          <div class="img">
+            <img src="static/images/machine-1.jpeg" />
+          </div>
+          <div class="description">
+            <a
+              href="./rent_machine.html"
+              style="text-decoration: none; color: black"
+              ><p>looking to Buy a machine? <span>&nbsp;&rarr;</span></p></a
+            >
+          </div>
+        </div>
+        <div class="card">
+          <div class="img">
+            <img src="static/images/automation.png" />
+          </div>
+
+          <div class="description">
+            <a
+              href="http://localhost:9090/"
+              style="text-decoration: none; color: black"
+              ><p>&nbsp; Automation Dashboard <span>&nbsp;&rarr;</span></p></a
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="img">
+            <img src="static/images/crops-image.jpeg" />
+          </div>
+          <div class="description">
+            <a
+              href="http://localhost:8080/listings"
+              style="text-decoration: none; color: black"
+              ><p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspSell your goods?
+                <span>&nbsp;&rarr;</span>
+              </p></a
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="img">
+            <img src="static/images/make_prediction.png" />
+          </div>
+          <div class="description2">
+            <a
+              href="http://localhost:5173/crop"
+              style="text-decoration: none; color: black"
+              ><p>Make Prediction<span>&nbsp;&rarr;</span></p></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-hero-image" id="sub-hero-image"></div>
+
+    <div class="about-agzone">
+      <div class="about">
+        <div class="image">
+          <p id="inc">About KrishiVikas Inc.</p>
+          <img src="./static/images/about-agzone.jpeg" />
+        </div>
+        <div class="about-para">
+          <p>
+            At <span>KrishiVikas </span>, based in Mumbai, India, we offer
+            expert advice with a wide variety of specialist products. We are
+            fortunate to be able to offer our clients the opportunity to test
+            drive machines at our farm which allows you to make a fully informed
+            choice. We have great people all over the country working towards
+            producing the world’s finest products, and we’re always on the
+            lookout for great talent.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <section class="services">
+      <div class="heading">
+        <p>Our Services</p>
+      </div>
+      <div class="service-image"></div>
+
+      <div class="cards">
+        <div class="actual-card">
+          <div class="card-image">
+            <img src="../static/Images/buy (2).png" />
+          </div>
+          <div class="content">
+            <div class="head"></div>
+
+            <p id="para">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Repudiandae, voluptates vel,non eius possimus?
+            </p>
+            <p id="more">Learn More</p>
+          </div>
+        </div>
+        <div class="actual-card">
+          <div class="card-image">
+            <img src="/static/images/sell (2).png" />
+          </div>
+          <div class="content">
+            <div class="head"></div>
+
+            <p id="para">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Repudiandae, voluptates vel,non eius possimus?
+            </p>
+            <p id="more">Learn More</p>
+          </div>
+        </div>
+        <div class="actual-card">
+          <div class="card-image">
+            <img src="/static/images/rent (2).png" />
+          </div>
+          <div class="content">
+            <div class="head"></div>
+
+            <p id="para">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Repudiandae, voluptates vel,non eius possimus?
+            </p>
+            <p id="more">Learn More</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="recent-updates" id="news">
+      <h1>Check out our recent news and updates</h1>
+      <div class="recent-pics">
+        <div class="recent-img1">
+          <img src="./static/images/recent-img1.jpg" />
+          <div class="flex">
+            <div class="date">
+              <span id="date">30</span><span id="year">December 2023</span>
+            </div>
+            <div class="img-description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+                quis risus vitae lacus pulvinar suscipit.
+              </p>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="recent-img2">
+          <img src="./static/images/recent-img2.jpg" />
+          <div class="flex">
+            <div class="date">
+              <span id="date">5</span><span id="year">January 2024</span>
+            </div>
+            <div class="img-description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+                quis risus vitae lacus pulvinar suscipit.
+              </p>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="recent-img3">
+          <img src="./static/images/recent-img3.jpg" />
+          <div class="flex">
+            <div class="date">
+              <span id="date">06</span><span id="year">April 2024</span>
+            </div>
+            <div class="img-description">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+                quis risus vitae lacus pulvinar suscipit.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="what-they-say">
+      <h1>What Our Customer says about us</h1>
+      <div class="div">
+        <div class="what-they-say-image">
+          <img src="./static/images//what-they-img.png" />
+        </div>
+
+        <div class="reviews">
+          <div class="review active">
+            <p>
+              "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
+              corrupti,!"
+            </p>
+            <div class="img-review">
+              <div class="user-profile1"></div>
+              <h3>Sakshi Joshi</h3>
+            </div>
+            <div class="review-rating">
+              <div class="star-div">&#9733;</div>
+              <div class="star-div">&#9733;</div>
+              <div class="star-div">&#9733;</div>
+              <div class="star-div">&#9733;</div>
+              <div class="star-div-none">&#9734;</div>
+              <span id="review1-rating">4/5</span>
+            </div>
+          </div>
+          <div class="review">
+            <p>
+              "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
+              corrupti,!"
+            </p>
+            <div class="img-review">
+              <div class="user-profile2"></div>
+              <h3>Yash Kelhe</h3>
+            </div>
+            <div class="review-rating">
+              <div class="star-div">&#9733;</div>
+              <div class="star-div">&#9733;</div>
+              <div class="star-div">&#9733;</div>
+              <div class="star-div-none">&#9734;</div>
+              <div class="star-div-none">&#9734;</div>
+              <span id="review1-rating">3/5</span>
+            </div>
+          </div>
+          <div class="review">
+            <p>
+              "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
+              corrupti,!"
+            </p>
+            <div class="img-review">
+              <div class="user-profile3"></div>
+              <h3>Ritik Pandey</h3>
+            </div>
+            <div class="review-rating">
+              <div class="star-div">&#9733;</div>
+              <div class="star-div">&#9733;</div>
+              <div class="star-div">&#9733;</div>
+              <div class="star-div">&#9733;</div>
+              <div class="star-div-none">&#9734;</div>
+              <span id="review1-rating">4/5</span>
+            </div>
+          </div>
+          <div class="review">
+            <p>
+              "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero
+              corrupti,!"
+            </p>
+            <div class="img-review">
+              <div class="user-profile4"></div>
+              <h3>Bhavesh Nanda</h3>
+            </div>
+            <div class="review-rating">
+              <div class="star-div">&#9733;</div>
+              <div class="star-div">&#9733;</div>
+              <div class="star-div">&#9733;</div>
+              <div class="star-div">&#9733;</div>
+              <div class="star-div">&#9733;</div>
+              <span id="review1-rating">5/5</span>
+            </div>
+          </div>
+          <div class="review">
+            <p>
+              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
+              placeat laudantium facilis ullam iure numquam quidem amet
+              doloremque, maiores, ad modi veritatis ea aliquam nisi pariatur,
+              architecto voluptas omnis labore."
+            </p>
+            <div class="img-review">
+              <div class="user-profile5"></div>
+              <h3>Dhruv Dalvi</h3>
+            </div>
+            <div class="review-rating">
+              <div class="star-div">&#9733;</div>
+              <div class="star-div">&#9733;</div>
+              <div class="star-div">&#9733;</div>
+              <div class="star-div">&#9733;</div>
+              <div class="star-div-none">&#9734;</div>
+              <span id="review1-rating">4/5</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer">
+      <div class="left-side-footer">
+        <p>&copy;2023 All Rights Reserved the Team.</p>
+      </div>
+      <div class="right-side-footer">
+        <p>
+          Web Design and Development by<a href="index.html">Vision Makers</a>
+        </p>
+      </div>
+    </section>
+  </body>
+</html>
